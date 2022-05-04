@@ -36,6 +36,6 @@ jobs:
           scope: subscription
           subscriptionId: ${{ env.subscriptionId }}
           region: ${{ env.azureRegion }}
-          template: $GITHUB_WORKSPACE/AZ-700_Lab-Deploy.json
-          parameters: $GITHUB_WORKSPACE/AZ-700_Lab-Deploy.parameters.json
+          template: ./AZ-700_Lab-Deploy.json
+          parameters: ./AZ-700_Lab-Deploy.parameters.json
           deploymentName: ResourceGroupDeploy-${{ env.networkResourceGroupName }}
