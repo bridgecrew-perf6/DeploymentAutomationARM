@@ -3,12 +3,15 @@
 name: deployToAzure
 env:
   subscriptionId: c64ca001-2cce-46de-837e-03f5564fc802 # Bakunas Sandbox 2
+  azureRegion: East US 2
 
 # Controls when the workflow will run
 on:
-  push:
-    branches:
-      - main
+  # Workflow will run on upon a commit
+
+#  push:
+#    branches:
+#      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,7 +30,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDS }}
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Deploy Template
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: subscription
+          subscriptionId: ${{ env.subscriptionId }}
+          region: ${{ env.azureRegion }}
+          template: $GITHUB_WORKSPACE/AZ-700_Lab-Deploy.json
+          parameters: $GITHUB_WORKSPACE/AZ-700_Lab-Deploy.parameters.json
+          deploymentName: ResourceGroupDeploy-${{ env.networkResourceGroupName }}
