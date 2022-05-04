@@ -38,4 +38,4 @@ jobs:
           region: ${{ env.azureRegion }}
           template: ./AZ-700_Lab-Deploy.json
           parameters: ./AZ-700_Lab-Deploy.parameters.json
-          deploymentName: ResourceGroupDeploy-${{ env.networkResourceGroupName }}
+          deploymentName: githubActionsDeployment
