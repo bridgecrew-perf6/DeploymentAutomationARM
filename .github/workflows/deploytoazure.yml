@@ -4,14 +4,15 @@ name: deployToAzure
 env:
   subscriptionId: c64ca001-2cce-46de-837e-03f5564fc802 # Bakunas Sandbox 2
   azureRegion: East US 2
+  networkResourceGroupName: ARMdemo01
+  vmResourceGroupame: ARMdemo02
 
 # Controls when the workflow will run
 on:
   # Workflow will run on upon a commit
-
-#  push:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,4 +39,6 @@ jobs:
           region: ${{ env.azureRegion }}
           template: ./AZ-700_Lab-Deploy.json
           parameters: ./AZ-700_Lab-Deploy.parameters.json
+           networkResourceGroup_Name = ${{ env.networkResourceGroupName }}
+           vmResourceGroup_Name = ${{ env.vmResourceGroupName }}
           deploymentName: githubActionsDeployment
