@@ -41,4 +41,4 @@ jobs:
           parameters: ./AZ-700_Lab-Deploy.parameters.json
            networkResourceGroup_Name=${{ env.networkResourceGroupName }}
            vmResourceGroup_Name=${{ env.vmResourceGroupName }}
-          deploymentName: githubActionsDeployment
+          deploymentName: githubActionsDeployment-${{ github.run_number }}
